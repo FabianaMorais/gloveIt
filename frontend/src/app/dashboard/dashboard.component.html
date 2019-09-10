@@ -1,0 +1,42 @@
+
+
+ <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+     <div class="form-group row ">
+       
+        <div class="col">
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="New task item" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Required field</div>
+            </div>
+        </div>
+
+        <div class="col"><button class="btn-primary">Create task</button></div>
+    </div>
+</form>
+
+<div class="row box">
+        <div class="col listTitle">Task Name </div>
+
+        <div class="col">
+            <button type="button" class="sortBtn"  (click)="sortAsc()"><i class="fa fa-sort-asc"></i></button>
+            <button type="button" class="sortBtn"  (click)="sortDsc()"><i class="fa fa-sort-desc"></i></button>
+        </div> 
+</div> 
+
+
+<div *ngFor="let x of list"> 
+    <div *ngIf = "x.flag==1">
+       <label><input  type="checkbox" checked (click)="onChange(x)">{{ x.name }}</label>
+    </div>
+    <div *ngIf = "x.flag==0">
+       <label><input  type="checkbox" (click)="onChange(x)" >{{ x.name }}</label>
+    </div>
+</div>
+
+ 
+
+
+
+
+
+
